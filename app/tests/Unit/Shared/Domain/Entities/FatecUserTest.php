@@ -29,4 +29,9 @@ class FatecUserTest extends TestCase
     {
         $this->assertEquals($this->sut->getUsername(), $this->defaultData['username']);
     }
+
+    public function testShouldReturnTheCorrectPassword(): void
+    {
+        $this->assertEquals($this->sut->getPassword(), $this->defaultData['password']);
+    }
 }
