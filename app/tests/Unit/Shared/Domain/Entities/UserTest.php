@@ -39,4 +39,9 @@ class UserTest extends TestCase
     {
         $this->assertEquals($this->sut->getFullName(), $this->defaultData['fullName']);
     }
+
+    public function testShouldReturnTheEmail(): void
+    {
+        $this->assertEquals($this->sut->getEmail(), $this->defaultData['email']);
+    }
 }
