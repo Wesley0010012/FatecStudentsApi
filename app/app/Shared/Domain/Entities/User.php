@@ -34,4 +34,9 @@ class User extends Entity
     {
         return $this->password;
     }
+
+    public function getApiToken(): ?string
+    {
+        return $this->apiToken;
+    }
 }
