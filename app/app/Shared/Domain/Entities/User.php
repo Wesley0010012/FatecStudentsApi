@@ -39,4 +39,9 @@ class User extends Entity
     {
         return $this->apiToken;
     }
+
+    public function getFatecUser(): FatecUser
+    {
+        return $this->fatecUser;
+    }
 }
