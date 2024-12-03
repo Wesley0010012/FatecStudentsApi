@@ -24,4 +24,9 @@ class User extends Entity
     {
         return $this->fullName;
     }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
 }
