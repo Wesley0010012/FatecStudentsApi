@@ -47,4 +47,9 @@ class EntityTest extends TestCase
     {
         $this->assertEquals($this->sut->getA(), 'a');
     }
+
+    public function testShouldReturnBOnSuccess(): void
+    {
+        $this->assertEquals($this->sut->getB(), 10);
+    }
 }
