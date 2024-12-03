@@ -44,4 +44,9 @@ class UserTest extends TestCase
     {
         $this->assertEquals($this->sut->getEmail(), $this->defaultData['email']);
     }
+
+    public function testShouldReturnThePassword(): void
+    {
+        $this->assertEquals($this->sut->getPassword(), $this->defaultData['password']);
+    }
 }
