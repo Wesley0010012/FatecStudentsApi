@@ -54,4 +54,9 @@ class UserTest extends TestCase
     {
         $this->assertEquals($this->sut->getApiToken(), $this->defaultData['apiToken']);
     }
+
+    public function testShouldReturnTheFatecUser(): void
+    {
+        $this->assertEquals($this->sut->getFatecUser(), $this->defaultData['fatecUser']);
+    }
 }
