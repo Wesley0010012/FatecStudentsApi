@@ -49,4 +49,9 @@ class UserTest extends TestCase
     {
         $this->assertEquals($this->sut->getPassword(), $this->defaultData['password']);
     }
+
+    public function testShouldReturnTheApiToken(): void
+    {
+        $this->assertEquals($this->sut->getApiToken(), $this->defaultData['apiToken']);
+    }
 }
