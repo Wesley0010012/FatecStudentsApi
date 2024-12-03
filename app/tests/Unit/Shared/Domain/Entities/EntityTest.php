@@ -42,4 +42,9 @@ class EntityTest extends TestCase
     {
         $this->assertEquals($this->sut->getId(), 1);
     }
+
+    public function testShouldReturnAOnSuccess(): void
+    {
+        $this->assertEquals($this->sut->getA(), 'a');
+    }
 }
