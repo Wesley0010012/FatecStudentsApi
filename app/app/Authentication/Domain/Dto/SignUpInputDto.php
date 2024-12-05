@@ -22,6 +22,11 @@ class SignUpInputDto extends InputDto
         return $this->email;
     }
 
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
     public function toDomain(): Entity
     {
         return new User(
