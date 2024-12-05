@@ -5,6 +5,7 @@ namespace Tests\Unit\Authentication\Domain\UseCases;
 use Faker\Factory as Faker;
 
 use App\Authentication\Domain\Dto\SignUpInputDto;
+use App\Authentication\Domain\Errors\UserExistsError;
 use App\Authentication\Domain\UseCases\SignUpUseCase;
 use App\Shared\Domain\Gateways\VerifyUserByEmail;
 use Exception;
@@ -65,5 +66,15 @@ class SignUpUseCaseTest extends TestCase
             ->with($input->getEmail());
 
         $this->sut->execute($input);
+    }
+
+    public function testShouldThrowUserExistsErrorIfUserExists(): void
+    {
+        $this->verifyUserByEmail->method('existsByEmail')
+            ->willReturn(true);
+
+        $this->expectException(UserExistsError::class);
+
+        $this->sut->execute($this->mockInput());
     }
 }
