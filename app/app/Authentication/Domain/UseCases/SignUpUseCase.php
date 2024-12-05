@@ -3,6 +3,7 @@
 namespace App\Authentication\Domain\UseCases;
 
 use App\Authentication\Domain\Dto\SignUpInputDto;
+use App\Authentication\Domain\Errors\UserExistsError;
 use App\Shared\Domain\Gateways\VerifyUserByEmail;
 use App\Shared\Domain\UseCases\UseCase;
 
@@ -16,7 +17,9 @@ class SignUpUseCase implements UseCase
     {
         $signInInput = (fn($i): SignUpInputDto => $i)($input);
 
-        $this->verifyUserByEmail->existsByEmail($signInInput->getEmail());
+        if ($this->verifyUserByEmail->existsByEmail($signInInput->getEmail())) {
+            throw new UserExistsError();
+        }
 
         return null;
     }
