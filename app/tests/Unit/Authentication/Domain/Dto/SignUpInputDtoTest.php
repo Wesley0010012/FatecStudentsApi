@@ -11,11 +11,14 @@ use Tests\TestCase;
 
 class SignUpInputDtoTest extends TestCase
 {
-    public function testShouldReturnTheCorrectEntityOnSuccess(): void
+    private readonly SignUpInputDto $sut;
+    private readonly array $data;
+
+    public function setUp(): void
     {
         $faker = Faker::create();
 
-        $data = [
+        $this->data = [
             "fullName" => $faker->name(),
             "email" => $faker->email(),
             "password" => $faker->password(),
@@ -23,45 +26,30 @@ class SignUpInputDtoTest extends TestCase
             "fatecPassword" => $faker->password()
         ];
 
-        $sut = new SignUpInputDto(
-            $data['fullName'],
-            $data['email'],
-            $data['password'],
-            $data['fatecUser'],
-            $data['fatecPassword']
+        $this->sut = new SignUpInputDto(
+            $this->data['fullName'],
+            $this->data['email'],
+            $this->data['password'],
+            $this->data['fatecUser'],
+            $this->data['fatecPassword']
         );
-
-        $this->assertEquals(new User(
-            $data['fullName'],
-            $data['email'],
-            $data['password'],
-            new FatecUser(
-                $data['fatecUser'],
-                $data['fatecPassword']
-            )
-        ), $sut->toDomain());
     }
 
-    public function testShouldReturnTheCorrectEmail()
+    public function testShouldReturnTheCorrectEntityOnSuccess(): void
     {
-        $faker = Faker::create();
+        $this->assertEquals(new User(
+            $this->data['fullName'],
+            $this->data['email'],
+            $this->data['password'],
+            new FatecUser(
+                $this->data['fatecUser'],
+                $this->data['fatecPassword']
+            )
+        ), $this->sut->toDomain());
+    }
 
-        $data = [
-            "fullName" => $faker->name(),
-            "email" => $faker->email(),
-            "password" => $faker->password(),
-            "fatecUser" => $faker->userName(),
-            "fatecPassword" => $faker->password()
-        ];
-
-        $sut = new SignUpInputDto(
-            $data['fullName'],
-            $data['email'],
-            $data['password'],
-            $data['fatecUser'],
-            $data['fatecPassword']
-        );
-
-        $this->assertEquals($data['email'], $sut->getEmail());
+    public function testShouldReturnTheCorrectEmail(): void
+    {
+        $this->assertEquals($this->data['email'], $this->sut->getEmail());
     }
 }
