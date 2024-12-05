@@ -52,4 +52,9 @@ class SignUpInputDtoTest extends TestCase
     {
         $this->assertEquals($this->data['email'], $this->sut->getEmail());
     }
+
+    public function testShouldReturnTheCorrectPassword(): void
+    {
+        $this->assertEquals($this->data['password'], $this->sut->getPassword());
+    }
 }
