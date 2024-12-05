@@ -55,4 +55,15 @@ class SignUpUseCaseTest extends TestCase
 
         $this->sut->execute($this->mockInput());
     }
+
+    public function testShouldVerifyUserByEmailHaveBeenCalledWithCorrectEmail(): void
+    {
+        $input = $this->mockInput();
+
+        $this->verifyUserByEmail->expects($this->once())
+            ->method('existsByEmail')
+            ->with($input->getEmail());
+
+        $this->sut->execute($input);
+    }
 }
