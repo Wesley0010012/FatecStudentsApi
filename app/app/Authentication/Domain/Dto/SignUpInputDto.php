@@ -13,6 +13,7 @@ class SignUpInputDto extends InputDto
         private readonly string $fullName,
         private readonly string $email,
         private readonly string $password,
+        private readonly string $passwordConfirmation,
         private readonly string $fatecUsername,
         private readonly string $fatecPassword,
     ) {}
@@ -25,6 +26,11 @@ class SignUpInputDto extends InputDto
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function getPasswordConfirmation(): string
+    {
+        return $this->passwordConfirmation;
     }
 
     public function toDomain(): Entity
