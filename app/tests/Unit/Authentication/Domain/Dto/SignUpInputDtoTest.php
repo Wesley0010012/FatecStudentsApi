@@ -22,6 +22,7 @@ class SignUpInputDtoTest extends TestCase
             "fullName" => $faker->name(),
             "email" => $faker->email(),
             "password" => $faker->password(),
+            "passwordConfirmation" => $faker->password(),
             "fatecUser" => $faker->userName(),
             "fatecPassword" => $faker->password()
         ];
@@ -30,6 +31,7 @@ class SignUpInputDtoTest extends TestCase
             $this->data['fullName'],
             $this->data['email'],
             $this->data['password'],
+            $this->data['passwordConfirmation'],
             $this->data['fatecUser'],
             $this->data['fatecPassword']
         );
@@ -56,5 +58,10 @@ class SignUpInputDtoTest extends TestCase
     public function testShouldReturnTheCorrectPassword(): void
     {
         $this->assertEquals($this->data['password'], $this->sut->getPassword());
+    }
+
+    public function testShouldReturnTheCorrectPasswordConfirmation(): void
+    {
+        $this->assertEquals($this->data['passwordConfirmation'], $this->sut->getPasswordConfirmation());
     }
 }
