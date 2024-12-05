@@ -41,4 +41,27 @@ class SignUpInputDtoTest extends TestCase
             )
         ), $sut->toDomain());
     }
+
+    public function testShouldReturnTheCorrectEmail()
+    {
+        $faker = Faker::create();
+
+        $data = [
+            "fullName" => $faker->name(),
+            "email" => $faker->email(),
+            "password" => $faker->password(),
+            "fatecUser" => $faker->userName(),
+            "fatecPassword" => $faker->password()
+        ];
+
+        $sut = new SignUpInputDto(
+            $data['fullName'],
+            $data['email'],
+            $data['password'],
+            $data['fatecUser'],
+            $data['fatecPassword']
+        );
+
+        $this->assertEquals($data['email'], $sut->getEmail());
+    }
 }
